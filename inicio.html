@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Filas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/inicio.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav>
+        <div class="logo-container">
+            <div class="logo"><i class="fas fa-calculator"></i></div>
+            <div class="nav-title">
+                <span>CALCULAR</span>
+                <span>NUEVA FILA</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="nav-link">INICIO</a>
+            <a href="#" class="nav-link active">PROYECTOS</a>
+            <a href="#" class="nav-link">CONTATOS</a>
+        </div>
+        <div class="user-info">
+            <div class="user-avatar"><i class="fas fa-user"></i></div>
+            <span id="username">USER 011</span>
+        </div>
+    </nav>
+
+    <!-- Contenedor principal -->
+    <div class="calculator-container">
+        <div class="input-group">
+            <div class="input-label">Fila Anterior</div>
+            <input type="text" id="previousRow" class="vector-input" placeholder="Ej: 1 2 3 o 1/2 3/4 5/6">
+        </div>
+
+        <div class="input-group">
+            <div class="input-row">
+                <div class="vector-group">
+                    <div class="input-label">Nueva Fila</div>
+                    <input type="text" id="newRow" class="vector-input" placeholder="Ej: 1 2 3 o 1/2 3/4 5/6">
+                </div>
+                
+                <div class="multiplier-group">
+                    <div class="input-label">multiplicador</div>
+                    <input type="text" id="multiplier" class="multiplier-input" placeholder="Ej: 2 o 3/4">
+                </div>
+            </div>
+        </div>
+
+        <button id="calculateBtn" class="calculate-btn">Calcular</button>
+
+        <div class="result-container">
+            <div class="formula">= FILA ANTERIOR - MILTIPLICADOR(NUEVA FILA)</div>
+            <div id="result" class="result-box">El resultado aparecerá aquí</div>
+            <div id="validationMessage" class="validation-message"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">Contacto</h3>
+                <p>info@misitio.com</p>
+                <p>Tel: +52-1-33-12345678</p>
+                <p>Av. Fray A. Alcalde 10</p>
+                <p>44100 Guad., Jal., México</p>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Creditos</h3>
+                <p>Uusaro 101</p>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">REDES SOCIALES</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon fb"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon ig"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon wa"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-icon yt"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/calcular.js"></script>
+</body>
+</html>

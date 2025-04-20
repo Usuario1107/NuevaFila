@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Estilos básicos para el cuerpo y contenedor principal */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Fondo con gradiente azul-violeta similar a la imagen */
+            background: linear-gradient(135deg, #003b4a 0%, #5e2750 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Contenedor principal con efecto de vidrio (glassmorphism) */
+        .login-container {
+            width: 400px;
+            padding: 40px;
+            border-radius: 24px;
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        /* Estilos para el título y logo */
+        .logo-title-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .logo {
+            color: #0088ff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        /* Mensaje de autenticación no disponible */
+        .auth-message {
+            background-color: rgba(100, 100, 100, 0.4);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none; /* Oculto inicialmente */
+        }
+        
+        /* Estilos para grupos de inputs */
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .input-group i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Estilos para los campos de entrada */
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px 12px 35px;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+            background-color: transparent;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Botón para mostrar/ocultar contraseña */
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+        }
+        
+        /* Contenedor para "Remember Me" y "Forgot Password" */
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+        
+        .remember-me input {
+            margin-right: 5px;
+        }
+        
+        .forgot-password {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        
+        /* Estilos para botones */
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+        
+        .login-btn {
+            background-color: white;
+            color: #333;
+        }
+        
+        .login-btn:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .guest-btn {
+            background-color: #0088ff;
+            color: white;
+        }
+        
+        .guest-btn:hover {
+            background-color: #0066cc;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Enlace para registro */
+        .register-link {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        
+        .register-link a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive para dispositivos móviles */
+        @media (max-width: 480px) {
+            .login-container {
+                width: 90%;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <!-- Logo y título -->
+        <div class="logo-title-container">
+            <div class="logo">C Logʎ</div>
+            <h1>Login</h1>
+        </div>
+        
+        <!-- Mensaje de autenticación (oculto inicialmente) -->
+        <div class="auth-message" id="auth-message">
+            La autenticación completa no está disponible.
+            Por favor, ingresa como invitado.
+        </div>
+        
+        <form id="login-form">
+            <!-- Email input -->
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="email" placeholder="Email" id="email" required>
+            </div>
+            
+            <!-- Password input -->
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Password" id="password" required>
+                <div class="password-toggle">
+                    <i class="fas fa-eye"></i>
+                </div>
+            </div>
+            
+            <!-- Remember Me y Forgot Password -->
+            <div class="remember-forgot">
+                <div class="remember-me">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Remember Me</label>
+                </div>
+                <a href="#" class="forgot-password">Has Olvidado la contraseña?</a>
+            </div>
+            
+            <!-- Botón principal de login -->
+            <button type="button" id="login-button" class="btn login-btn">Login</button>
+            
+            <!-- Botón de invitado -->
+            <button type="button" id="guest-button" class="btn guest-btn">Invitado</button>
+            
+            <!-- Enlace de registro -->
+            <div class="register-link">
+                Don't have an account? <a href="#">Register</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // DOCUMENTACIÓN: Script principal para el funcionamiento del login
+        
+        // DOCUMENTACIÓN: Referencias a elementos DOM
+        const loginButton = document.getElementById('login-button');
+        const guestButton = document.getElementById('guest-button');
+        const authMessage = document.getElementById('auth-message');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        
+        // DOCUMENTACIÓN: Funcionalidad para mostrar/ocultar contraseña
+        document.querySelector('.password-toggle').addEventListener('click', function() {
+            const passwordInput = this.previousElementSibling;
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+        
+        // DOCUMENTACIÓN: Botón principal de Login - Muestra mensaje de error
+        loginButton.addEventListener('click', function() {
+            // Muestra el mensaje de error
+            authMessage.style.display = 'block';
+            
+            // Añade un efecto de sacudida al mensaje para llamar la atención
+            authMessage.classList.add('shake');
+            setTimeout(() => {
+                authMessage.classList.remove('shake');
+            }, 500);
+        });
+        
+        // DOCUMENTACIÓN: Botón de Invitado - Permite ingresar directamente
+        guestButton.addEventListener('click', function() {
+            // Guarda el email (si existe) como nombre de usuario
+            const username = emailInput.value || 'Invitado';
+            localStorage.setItem('guestUsername', username);
+            
+            // Redirige a la página de la calculadora
+            window.location.href = 'inicio.html';
+        });
+        
+        // DOCUMENTACIÓN: Prevenir envío del formulario al presionar Enter
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Activar el botón de login al enviar el formulario
+            loginButton.click();
+        });
+    </script>
+</body>
+</html>
