@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
+    <style>                   
         /* Estilos básicos para el cuerpo y contenedor principal */
         * {
             margin: 0;
@@ -15,14 +15,17 @@
         }
         
         body {
+            background: 
+            linear-gradient(90deg, 
+            rgba(255,0,0,0.2) 0%,     /* Rojo al inicio */
+            rgba(0,255,0,0.2) 100%
+        ),
+               url('./imgs/fondo_login2.jpg') center/cover no-repeat;
+            
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Fondo con gradiente azul-violeta similar a la imagen */
-            background: linear-gradient(135deg, #003b4a 0%, #5e2750 100%);
-            position: relative;
-            overflow: hidden;
         }
         
         /* Contenedor principal con efecto de vidrio (glassmorphism) */
@@ -43,22 +46,20 @@
         .logo-title-container {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: center;                           
             margin-bottom: 20px;
         }
         
         h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            font-weight: 500;
+            font-weight: 700;
         }
         
         .logo {
-            color: #0088ff;
-            font-size: 2.5rem;
-            font-weight: bold;
-            font-style: italic;
-            margin-bottom: 10px;
+            width: 150px; /* Ajusta este valor según el tamaño que necesites */
+            height: auto; /* Mantiene la proporción de la imagen */
+            margin-bottom: 0px;
         }
         
         /* Mensaje de autenticación no disponible */
@@ -203,7 +204,7 @@
     <div class="login-container">
         <!-- Logo y título -->
         <div class="logo-title-container">
-            <div class="logo">C Logʎ</div>
+            <img src="./imgs/logo.png" alt="Logo" class="logo">
             <h1>Login</h1>
         </div>
         
