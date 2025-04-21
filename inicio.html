@@ -11,10 +11,12 @@
     <!-- Barra de navegación -->
     <nav>
         <div class="logo-container">
-            <div class="logo"><i class="fas fa-calculator"></i></div>
+            <div class="logo">
+                <img src="./imgs/logo.png" alt="Logo" class="logo-img">
+            </div>
+            
             <div class="nav-title">
-                <span>CALCULAR</span>
-                <span>NUEVA FILA</span>
+                <span>CALCULAR NF</span>
             </div>
         </div>
         <div class="nav-links">
@@ -30,30 +32,32 @@
 
     <!-- Contenedor principal -->
     <div class="calculator-container">
-        <div class="input-group">
-            <div class="input-label">Fila Anterior</div>
-            <input type="text" id="previousRow" class="vector-input" placeholder="Ej: 1 2 3 o 1/2 3/4 5/6">
-        </div>
+        
 
         <div class="input-group">
             <div class="input-row">
                 <div class="vector-group">
                     <div class="input-label">Nueva Fila</div>
-                    <input type="text" id="newRow" class="vector-input" placeholder="Ej: 1 2 3 o 1/2 3/4 5/6">
+                    <input type="text" id="newRow" class="vector-input" placeholder="Ej: 1 2 o 1/2 3/4.......">
                 </div>
                 
                 <div class="multiplier-group">
                     <div class="input-label">multiplicador</div>
-                    <input type="text" id="multiplier" class="multiplier-input" placeholder="Ej: 2 o 3/4">
+                    <input type="text" id="multiplier" class="multiplier-input" placeholder="2 o 3/4">
                 </div>
             </div>
+
+        </div>
+        <div class="input-group">
+            <div class="input-label">Fila Anterior</div>
+            <input type="text" id="previousRow" class="vector-input" placeholder="1 2 o 1/2 3/4....">
         </div>
 
         <button id="calculateBtn" class="calculate-btn">Calcular</button>
 
         <div class="result-container">
-            <div class="formula">= FILA ANTERIOR - MILTIPLICADOR(NUEVA FILA)</div>
-            <div id="result" class="result-box">El resultado aparecerá aquí</div>
+            <div class="formula">FILA ANTERIOR - MILTIPLICADOR (NUEVA FILA)</div>
+            <div id="result" class="result-box">Resultado</div>
             <div id="validationMessage" class="validation-message"></div>
         </div>
     </div>
@@ -64,14 +68,13 @@
             <div class="footer-section">
                 <h3 class="footer-title">Contacto</h3>
                 <p>info@misitio.com</p>
-                <p>Tel: +52-1-33-12345678</p>
-                <p>Av. Fray A. Alcalde 10</p>
-                <p>44100 Guad., Jal., México</p>
+                <p>Tel: +*********</p>
+                <p>Av.  ----------</p>
             </div>
 
             <div class="footer-section">
                 <h3 class="footer-title">Creditos</h3>
-                <p>Uusaro 101</p>
+                <p>Usario 1107</p>
             </div>
 
             <div class="footer-section">
