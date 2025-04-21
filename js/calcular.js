@@ -162,7 +162,7 @@ function calculateResult() {
         });
         
         // Mostrar el resultado
-        const resultStr = result.map(formatFraction).join(' | ');
+        const resultStr = result.map(formatFraction).join('  |  ');
         resultBox.textContent = resultStr;
         
         // Aplicar efecto visual para destacar el resultado
