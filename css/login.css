@@ -1,0 +1,277 @@
+/* Reseteo de estilos y configuración de caja para todos los elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Estilo del cuerpo de la página con gradiente y fondo */
+body {
+    /* Fondo con gradiente semitransparente sobre imagen */
+    background: 
+        linear-gradient(90deg, 
+        rgba(255,0,0,0.2) 0%,     /* Rojo semitransparente al inicio */
+        rgba(0,255,0,0.2) 100%),  /* Verde semitransparente al final */
+        url('../imgs/fondo_login2.jpg') center/cover no-repeat;
+    
+    /* Ocupar toda la altura de la ventana */
+    height: 100vh;
+    
+    /* Centrar el contenido vertical y horizontalmente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor principal con efecto de vidrio (glassmorphism) */
+.login-container {
+    /* Dimensiones y espaciado */
+    width: 400px;
+    padding: 40px;
+    
+    /* Bordes redondeados */
+    border-radius: 24px;
+    
+    /* Efecto de vidrio con fondo semitransparente y desenfoque */
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(6px);
+    
+    /* Sombra y borde sutil */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    
+    /* Color de texto y alineación */
+    color: rgba(255, 255, 255, 0.95); /* Blanco con opacidad casi completa */
+    text-shadow: 
+        0 1px 3px rgba(0, 0, 0, 0.5), /* Sombra oscura para contraste */
+        0 0 10px rgba(255, 255, 255, 0.3); /* Brillo sutil para efecto "glow" */
+    text-align: center;
+    
+    /* Posicionamiento relativo para elementos internos absolutos */
+    position: relative;
+}
+
+/* Contenedor para el logo y título */
+.logo-title-container {
+    /* Estructura en columna y alineación */
+    display: flex;
+    flex-direction: column;
+    align-items: center;                           
+    margin-bottom: 20px;
+}
+
+/* Estilo del título principal */
+h1 {
+    font-size: 2.5rem;
+    color: #000;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+/* Estilo del logo */
+.logo {
+    width: 150px;
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin-bottom: 0px;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 255, 0.5));
+    position: relative;
+}
+
+
+/* Mensaje de error de autenticación */
+.auth-message {
+    background-color: rgba(94, 94, 94, 0.6);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    display: none; /* Oculto inicialmente */
+}
+
+/* Grupo que contiene cada campo de entrada y sus íconos */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Posicionamiento de íconos dentro de los campos */
+/* Íconos más visibles */
+.input-group i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white; /* Color sólido (antes era #ffffff) */
+    font-size: 16px; /* Tamaño un poco más grande */
+    text-shadow: 0 1px 3px black; /* Sombra para contraste */
+}
+
+/* Estilo de los campos de entrada */
+/* Campos de texto mejorados */
+input[type="email"],
+input[type="password"], 
+input[type="text"] {  /* Añadir tipo text para mantener estilo al mostrar contraseña */
+    width: 100%;
+    padding: 12px 15px 12px 40px; /* Más espacio para el ícono */
+    border: none;
+    border-radius: 8px; /* 🔥 Más redondeado */
+    border-bottom: 2px solid white; /* Borde más grueso */
+    background-color: rgba(0, 0, 0, 0.2); /* Fondo oscuro translúcido */
+    color: white; /* Texto en blanco (antes era negro) */
+    font-size: 16px; /* Tamaño más estándar (antes 25px) */
+    outline: none;
+}
+
+/* Asegura que el texto escrito sea visible */
+input[type="email"]:not(:placeholder-shown),
+input[type="password"]:not(:placeholder-shown),
+input[type="text"]:not(:placeholder-shown) {  /* Añadir tipo text aquí también */
+    color: white !important; /* Fuerza texto blanco */
+    background-color: rgba(0, 0, 0, 0.5) !important; /* Fondo más oscuro */
+}
+
+/* Estilo del texto de placeholder */
+/* Placeholder más claro */
+input::placeholder {
+    color: rgba(255, 255, 255, 0.8); /* Blanco con 80% opacidad (antes 0.7) */
+    font-size: 15px; /* Tamaño un poco menor */
+}
+
+/* Botón para mostrar/ocultar contraseña */
+/* Botón de mostrar/ocultar contraseña */
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(110, 110, 110); /* Color sólido (antes rgba) */
+    cursor: pointer;
+    font-size: 18px; /* Tamaño aumentado */
+}
+
+
+/* Contenedor para "Remember Me" y "Forgot Password" */
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 14px;
+     text-shadow: 0 1px 3px black; /* Sombra para contraste */
+}
+
+/* Espacio entre checkbox y su etiqueta */
+.remember-me input {
+    margin-right: 5px;
+}
+
+/* --- Añade esto al final de tu CSS --- */
+
+/* --- Añade esto al CSS --- */
+.remember-me label {
+    color: #000000; /* Azul claro */
+    text-shadow: 
+        0 1px 2px rgba(255, 255, 255, 0.5), /* Sombra suave */
+        0 0 5px rgba(0, 0, 0, 0.9); /* Brillo azul */
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.remember-me label:hover {
+    color: #ffc8a8; /* Azul más claro al pasar el mouse */
+    text-shadow: 
+        0 1px 3px rgba(0, 0, 0, 0.7),
+        0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+
+.forgot-password {
+    display: none; /* Oculta inicialmente */
+    color: white; /* Rojo suave para alerta */
+    text-shadow: 0 1px 3px rgb(0, 0, 0); 
+    text-decoration: none;
+    font-size: 15px;
+    /*
+    margin-top: 10px; /* Espacio si aparece debajo */
+}
+
+.forgot-password.visible {
+    display: block; /* Muestra cuando se añade esta clase */
+}
+
+/* Efecto hover para el enlace de recuperar contraseña */
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Estilos base para botones */
+.btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+}
+
+/* Estilo específico para el botón de login */
+.login-btn {
+    background-color: white;
+    color: black;
+    font-size: 22px;
+}
+
+/* Efecto hover para el botón de login */
+.login-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo específico para el botón de invitado */
+.guest-btn {
+    background-color: #0088ff;
+    color: white;
+    font-size: 22px;
+}
+
+/* Efecto hover para el botón de invitado */
+.guest-btn:hover {
+    background-color: #0066cc;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+/* Contenedor para el enlace de registro */
+.register-link {
+    margin-top: 20px;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+}
+
+/* Enlace para registro */
+.register-link a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    /* === CONTORNO NEGRO === */
+    text-shadow: 
+        1px 1px 0 #002aff,1px 1px 0 #1900ff; /* Contorno negro de 1px */
+    padding: 2px 4px; /* Espacio adicional para mejor legibilidad */
+}
+
+/* Efecto hover para el enlace de registro */
+.register-link a:hover {
+    text-decoration: underline;
+}
+/* Estilo responsivo para dispositivos móviles */
+@media (max-width: 480px) {
+    .login-container {
+        width: 90%; /* Adaptarse al ancho de la pantalla */
+        padding: 30px 20px; /* Reducir el padding en pantallas pequeñas */
+    }
+}

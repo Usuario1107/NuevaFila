@@ -2,204 +2,16 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <!-- Configuración de la vista para dispositivos móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <!-- Importación de íconos de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>                   
-        /* Estilos básicos para el cuerpo y contenedor principal */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: 
-            linear-gradient(90deg, 
-            rgba(255,0,0,0.2) 0%,     /* Rojo al inicio */
-            rgba(0,255,0,0.2) 100%
-        ),  url('./imgs/fondo_login.jpg') center/cover no-repeat;
-            
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        /* Contenedor principal con efecto de vidrio (glassmorphism) */
-        .login-container {
-            width: 400px;
-            padding: 40px;
-            border-radius: 24px;
-            background-color: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            text-align: center;
-            position: relative;
-        }
-        
-        /* Estilos para el título y logo */
-        .logo-title-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;                           
-            margin-bottom: 20px;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        
-        .logo {
-            width: 150px; /* Ajusta este valor según el tamaño que necesites */
-            height: auto; /* Mantiene la proporción de la imagen */
-            margin-bottom: 0px;
-        }
-        
-        /* Mensaje de autenticación no disponible */
-        .auth-message {
-            background-color: rgba(100, 100, 100, 0.4);
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-size: 14px;
-            display: none; /* Oculto inicialmente */
-        }
-        
-        /* Estilos para grupos de inputs */
-        .input-group {
-            position: relative;
-            margin-bottom: 25px;
-        }
-        
-        .input-group i {
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        /* Estilos para los campos de entrada */
-        input[type="email"],
-        input[type="password"] {
-            width: 100%;
-            padding: 12px 15px 12px 35px;
-            border: none;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.7);
-            background-color: transparent;
-            color: white;
-            font-size: 16px;
-            outline: none;
-        }
-        
-        input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        /* Botón para mostrar/ocultar contraseña */
-        .password-toggle {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: rgba(255, 255, 255, 0.8);
-            cursor: pointer;
-        }
-        
-        /* Contenedor para "Remember Me" y "Forgot Password" */
-        .remember-forgot {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
-        
-        .remember-me {
-            display: flex;
-            align-items: center;
-        }
-        
-        .remember-me input {
-            margin-right: 5px;
-        }
-        
-        .forgot-password {
-            color: white;
-            text-decoration: none;
-        }
-        
-        .forgot-password:hover {
-            text-decoration: underline;
-        }
-        
-        /* Estilos para botones */
-        .btn {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 15px;
-        }
-        
-        .login-btn {
-            background-color: white;
-            color: #333;
-        }
-        
-        .login-btn:hover {
-            background-color: rgba(255, 255, 255, 0.9);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .guest-btn {
-            background-color: #0088ff;
-            color: white;
-        }
-        
-        .guest-btn:hover {
-            background-color: #0066cc;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Enlace para registro */
-        .register-link {
-            margin-top: 20px;
-            font-size: 14px;
-        }
-        
-        .register-link a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        
-        .register-link a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Responsive para dispositivos móviles */
-        @media (max-width: 480px) {
-            .login-container {
-                width: 90%;
-                padding: 30px 20px;
-            }
-        }
-    </style>
+    <!-- Vinculación con el archivo CSS externo -->
+    <link rel="stylesheet" href="./css/login.css">
 </head>
 <body>
+    <!-- Contenedor principal del formulario de login -->
     <div class="login-container">
         <!-- Logo y título -->
         <div class="logo-title-container">
@@ -209,18 +21,19 @@
         
         <!-- Mensaje de autenticación (oculto inicialmente) -->
         <div class="auth-message" id="auth-message">
-            La autenticación completa no está disponible.
+            La autenticación  no está disponible.
             Por favor, ingresa como invitado.
         </div>
         
+        <!-- Formulario de inicio de sesión -->
         <form id="login-form">
-            <!-- Email input -->
+            <!-- Campo de entrada para email -->
             <div class="input-group">
                 <i class="fas fa-user"></i>
                 <input type="email" placeholder="Email" id="email" required>
             </div>
             
-            <!-- Password input -->
+            <!-- Campo de entrada para contraseña -->
             <div class="input-group">
                 <i class="fas fa-lock"></i>
                 <input type="password" placeholder="Password" id="password" required>
@@ -229,7 +42,7 @@
                 </div>
             </div>
             
-            <!-- Remember Me y Forgot Password -->
+            <!-- Sección "Recordarme" y "Olvidé mi contraseña" -->
             <div class="remember-forgot">
                 <div class="remember-me">
                     <input type="checkbox" id="remember">
@@ -241,70 +54,103 @@
             <!-- Botón principal de login -->
             <button type="button" id="login-button" class="btn login-btn">Login</button>
             
-            <!-- Botón de invitado -->
+            <!-- Botón de acceso como invitado -->
             <button type="button" id="guest-button" class="btn guest-btn">Invitado</button>
             
-            <!-- Enlace de registro -->
+            <!-- Enlace para registrarse -->
             <div class="register-link">
                 Don't have an account? <a href="#">Register</a>
             </div>
         </form>
     </div>
+<!-- Script para la funcionalidad del login -->
+<script>
+    // ===== ELEMENTOS DEL DOM =====
+    const loginButton = document.getElementById('login-button');
+    const guestButton = document.getElementById('guest-button');
+    const authMessage = document.getElementById('auth-message');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const rememberCheckbox = document.getElementById('remember');
+    const forgotPasswordLink = document.querySelector('.forgot-password');
+    const loginForm = document.getElementById('login-form');
 
-    <script>
-        // DOCUMENTACIÓN: Script principal para el funcionamiento del login
+    // ===== MOSTRAR/OCULTAR CONTRASEÑA =====
+    document.querySelector('.password-toggle').addEventListener('click', function() {
+        const passwordInput = this.previousElementSibling;
+        const icon = this.querySelector('i');
         
-        // DOCUMENTACIÓN: Referencias a elementos DOM
-        const loginButton = document.getElementById('login-button');
-        const guestButton = document.getElementById('guest-button');
-        const authMessage = document.getElementById('auth-message');
-        const emailInput = document.getElementById('email');
-        const passwordInput = document.getElementById('password');
-        
-        // DOCUMENTACIÓN: Funcionalidad para mostrar/ocultar contraseña
-        document.querySelector('.password-toggle').addEventListener('click', function() {
-            const passwordInput = this.previousElementSibling;
-            const icon = this.querySelector('i');
-            
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            } else {
-                passwordInput.type = 'password';
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            }
-        });
-        
-        // DOCUMENTACIÓN: Botón principal de Login - Muestra mensaje de error
-        loginButton.addEventListener('click', function() {
-            // Muestra el mensaje de error
+        passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+        icon.classList.toggle('fa-eye');
+        icon.classList.toggle('fa-eye-slash');
+    });
+
+    // ===== VALIDACIÓN DE CAMPOS =====
+    function validateFields() {
+        if (!emailInput.value || !passwordInput.value) {
+            authMessage.textContent = 'Por favor, complete todos los campos';
             authMessage.style.display = 'block';
-            
-            // Añade un efecto de sacudida al mensaje para llamar la atención
-            authMessage.classList.add('shake');
-            setTimeout(() => {
-                authMessage.classList.remove('shake');
-            }, 500);
-        });
+            forgotPasswordLink.style.display = 'none'; // Ocultar en caso de campos vacíos
+            return false;
+        }
+        return true;
+    }
+
+    // ===== BOTÓN LOGIN =====
+    loginButton.addEventListener('click', function() {
+        // Resetear mensajes previos
+        authMessage.style.display = 'none';
+        forgotPasswordLink.style.display = 'none';
         
-        // DOCUMENTACIÓN: Botón de Invitado - Permite ingresar directamente
-        guestButton.addEventListener('click', function() {
-            // Guarda el email (si existe) como nombre de usuario
-            const username = emailInput.value || 'Invitado';
-            localStorage.setItem('guestUsername', username);
+        if (!validateFields()) return;
+        
+        // Simular autenticación fallida (esto sería tu lógica real)
+        const authSuccess = false; // Cambiar a true para simular éxito
+        
+        if (!authSuccess) {
+            authMessage.textContent = 'La autenticación  no está disponible. Por favor, ingresa como invitado.';
+            authMessage.style.display = 'block';
+            forgotPasswordLink.style.display = 'block';
             
-            // Redirige a la página de la calculadora
+            if (rememberCheckbox.checked) {
+                document.querySelector('.remember-me label').style.color = '#00b4ff';
+                document.querySelector('.remember-me label').style.textShadow = '0 0 8px rgba(0, 180, 255, 0.6)';
+            }
+        } else {
+            // Redirección en caso de éxito
             window.location.href = 'inicio.html';
-        });
-        
-        // DOCUMENTACIÓN: Prevenir envío del formulario al presionar Enter
-        document.getElementById('login-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Activar el botón de login al enviar el formulario
-            loginButton.click();
-        });
-    </script>
+        }
+    });
+
+    // ===== BOTÓN INVITADO =====
+    guestButton.addEventListener('click', function() {
+        const username = emailInput.value || 'Invitado';
+        localStorage.setItem('guestUsername', username);
+        window.location.href = 'inicio.html';
+    });
+
+    // ===== PREVENIR ENVÍO DE FORMULARIO =====
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        loginButton.click();
+    });
+
+    // ===== RECORDAR USUARIO =====
+    rememberCheckbox.addEventListener('change', function() {
+        const label = document.querySelector('.remember-me label');
+        if (this.checked) {
+            label.style.color = '#00b4ff';
+            label.style.textShadow = '0 0 8px rgba(0, 180, 255, 0.6)';
+        } else {
+            label.style.color = '';
+            label.style.textShadow = '';
+        }
+    });
+
+    // ===== INICIALIZACIÓN =====
+    // Ocultar elementos al cargar
+    authMessage.style.display = 'none';
+    forgotPasswordLink.style.display = 'none';
+</script>
 </body>
 </html>
