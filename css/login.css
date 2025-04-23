@@ -25,19 +25,6 @@ body {
     
 }
 
-/* 🌟 Truco para que se adapte si no cabe */
-@media (min-height: 700px) {
-    body {
-        align-items: center;  /* Centrado vertical solo si hay espacio */
-    }
-}
-
-@media (max-height: 699px) {
-    body {
-        align-items: flex-start; /* Si la pantalla es baja, alinea arriba y permite scroll */
-    }
-}
-
 
 
 /* Contenedor principal con efecto de vidrio (glassmorphism) */
