@@ -22,7 +22,7 @@
         <!-- Mensaje de autenticación (oculto inicialmente) -->
         <div class="auth-message" id="auth-message">
             La autenticación  no está disponible.
-            Por favor, ingresa como invitado.
+            Por favor, ingresa como Invitado.
         </div>
         
         <!-- Formulario de inicio de sesión -->
@@ -30,13 +30,13 @@
             <!-- Campo de entrada para email -->
             <div class="input-group">
                 <i class="fas fa-user"></i>
-                <input type="email" placeholder="Email" id="email" required>
+                <input type="email" placeholder="Usuario" id="email" required>
             </div>
             
             <!-- Campo de entrada para contraseña -->
             <div class="input-group">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Password" id="password" required>
+                <input type="password" placeholder="Contraseña" id="password" required>
                 <div class="password-toggle">
                     <i class="fas fa-eye"></i>
                 </div>
@@ -46,7 +46,7 @@
             <div class="remember-forgot">
                 <div class="remember-me">
                     <input type="checkbox" id="remember">
-                    <label for="remember">Remember Me</label>
+                    <label for="remember">Recuérdamelo</label>
                 </div>
                 <a href="#" class="forgot-password">Has Olvidado la contraseña?</a>
             </div>
@@ -59,13 +59,13 @@
             
             <!-- Enlace para registrarse -->
             <div class="register-link">
-                Don't have an account? <a href="#">Register</a>
+                ¿No tienes una cuenta?<a href="#"> Regístrate</a>
             </div>
         </form>
     </div>
 <!-- Script para la funcionalidad del login -->
 <script>
-    // ===== ELEMENTOS DEL DOM =====
+    // === REFERENCIAS A ELEMENTOS DEL DOM ===
     const loginButton = document.getElementById('login-button');
     const guestButton = document.getElementById('guest-button');
     const authMessage = document.getElementById('auth-message');
@@ -74,83 +74,81 @@
     const rememberCheckbox = document.getElementById('remember');
     const forgotPasswordLink = document.querySelector('.forgot-password');
     const loginForm = document.getElementById('login-form');
+    const passwordToggle = document.querySelector('.password-toggle');
 
-    // ===== MOSTRAR/OCULTAR CONTRASEÑA =====
-    document.querySelector('.password-toggle').addEventListener('click', function() {
-        const passwordInput = this.previousElementSibling;
-        const icon = this.querySelector('i');
-        
-        passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
-        icon.classList.toggle('fa-eye');
-        icon.classList.toggle('fa-eye-slash');
+    // === FUNCIONES ===
+
+    // Mostrar/ocultar contraseña
+    passwordToggle.addEventListener('click', () => {
+        const icon = passwordToggle.querySelector('i');
+        const isPassword = passwordInput.type === 'password';
+        passwordInput.type = isPassword ? 'text' : 'password';
+        icon.classList.toggle('fa-eye', !isPassword);
+        icon.classList.toggle('fa-eye-slash', isPassword);
     });
 
-    // ===== VALIDACIÓN DE CAMPOS =====
-    function validateFields() {
-        if (!emailInput.value || !passwordInput.value) {
-            authMessage.textContent = 'Por favor, complete todos los campos';
-            authMessage.style.display = 'block';
-            forgotPasswordLink.style.display = 'none'; // Ocultar en caso de campos vacíos
-            return false;
-        }
-        return true;
-    }
+    // Validación de campos obligatorios
+    const validateFields = () => {
+        const empty = !emailInput.value || !passwordInput.value;
+        authMessage.textContent = empty ? 'Por favor, complete todos los campos' : '';
+        authMessage.style.display = empty ? 'block' : 'none';
+        forgotPasswordLink.style.display = 'none';
+        return !empty;
+    };
 
-    // ===== BOTÓN LOGIN =====
-    loginButton.addEventListener('click', function() {
-        // Resetear mensajes previos
+    // Mostrar mensaje personalizado y efecto visual
+    const showAuthUnavailable = () => {
+        authMessage.textContent = 'La autenticación no está disponible. Por favor, ingresa como invitado.';
+        authMessage.style.display = 'block';
+        forgotPasswordLink.style.display = 'block';
+
+        if (rememberCheckbox.checked) {
+            const label = document.querySelector('.remember-me label');
+            label.style.color = 'black';
+            label.style.textShadow = '0 0 8px rgba(0, 180, 255, 0.6)';
+        }
+    };
+
+    // === EVENTOS ===
+
+    // Botón de login
+    loginButton.addEventListener('click', () => {
         authMessage.style.display = 'none';
         forgotPasswordLink.style.display = 'none';
-        
-        if (!validateFields()) return;
-        
-        // Simular autenticación fallida (esto sería tu lógica real)
-        const authSuccess = false; // Cambiar a true para simular éxito
-        
-        if (!authSuccess) {
-            authMessage.textContent = 'La autenticación  no está disponible. Por favor, ingresa como invitado.';
-            authMessage.style.display = 'block';
-            forgotPasswordLink.style.display = 'block';
-            
-            if (rememberCheckbox.checked) {
-                document.querySelector('.remember-me label').style.color = '#00b4ff';
-                document.querySelector('.remember-me label').style.textShadow = '0 0 8px rgba(0, 180, 255, 0.6)';
-            }
-        } else {
-            // Redirección en caso de éxito
-            window.location.href = 'inicio.html';
-        }
+        if (validateFields()) showAuthUnavailable();
     });
 
-    // ===== BOTÓN INVITADO =====
-    guestButton.addEventListener('click', function() {
-        const username = emailInput.value || 'Invitado';
+    // Botón de invitado
+    guestButton.addEventListener('click', () => {
+        const username = emailInput.value.trim() || 'Invitado';
         localStorage.setItem('guestUsername', username);
         window.location.href = 'inicio.html';
     });
 
-    // ===== PREVENIR ENVÍO DE FORMULARIO =====
-    loginForm.addEventListener('submit', function(e) {
+    // Prevenir envío por submit tradicional
+    loginForm.addEventListener('submit', e => {
         e.preventDefault();
         loginButton.click();
     });
 
-    // ===== RECORDAR USUARIO =====
-    rememberCheckbox.addEventListener('change', function() {
+    // Checkbox recordar usuario
+    rememberCheckbox.addEventListener('change', () => {
         const label = document.querySelector('.remember-me label');
-        if (this.checked) {
-            label.style.color = '#00b4ff';
-            label.style.textShadow = '0 0 8px rgba(0, 180, 255, 0.6)';
+        if (rememberCheckbox.checked) {
+            label.style.color = 'black';
+            label.style.textShadow = '0 0 8px rgba(0, 0, 0, 0.6)';
         } else {
             label.style.color = '';
             label.style.textShadow = '';
         }
     });
 
-    // ===== INICIALIZACIÓN =====
-    // Ocultar elementos al cargar
-    authMessage.style.display = 'none';
-    forgotPasswordLink.style.display = 'none';
+    // Inicialización: ocultar mensajes al cargar
+    window.addEventListener('DOMContentLoaded', () => {
+        authMessage.style.display = 'none';
+        forgotPasswordLink.style.display = 'none';
+    });
 </script>
+
 </body>
 </html>

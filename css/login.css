@@ -5,24 +5,40 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-/* Estilo del cuerpo de la página con gradiente y fondo */
 body {
-    /* Fondo con gradiente semitransparente sobre imagen */
     background: 
         linear-gradient(90deg, 
-        rgba(255,0,0,0.2) 0%,     /* Rojo semitransparente al inicio */
-        rgba(0,255,0,0.2) 100%),  /* Verde semitransparente al final */
+            rgba(255, 0, 0, 0.2) 0%,     
+            rgba(255, 255, 255, 0.1) 50%,  
+            rgba(0, 255, 0, 0.2) 100%
+        ),
         url('../imgs/fondo_login2.jpg') center/cover no-repeat;
-    
-    /* Ocupar toda la altura de la ventana */
-    height: 100vh;
-    
-    /* Centrar el contenido vertical y horizontalmente */
+
+    min-height: 100vh;
+    height: auto;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
+    padding: 20px; /* 🟢 Agregado para evitar que el contenido pegue al borde al hacer scroll */
+    
 }
+
+/* 🌟 Truco para que se adapte si no cabe */
+@media (min-height: 700px) {
+    body {
+        align-items: center;  /* Centrado vertical solo si hay espacio */
+    }
+}
+
+@media (max-height: 699px) {
+    body {
+        align-items: flex-start; /* Si la pantalla es baja, alinea arriba y permite scroll */
+    }
+}
+
+
 
 /* Contenedor principal con efecto de vidrio (glassmorphism) */
 .login-container {
@@ -65,7 +81,7 @@ body {
 h1 {
     font-size: 2.5rem;
     color: #000;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     font-weight: 700;
 }
 
@@ -74,7 +90,7 @@ h1 {
     width: 150px;
     height: auto; /* Mantiene la proporción de la imagen */
     margin-bottom: 0px;
-    filter: drop-shadow(0 0 10px rgba(0, 0, 255, 0.5));
+    filter: drop-shadow(0 0 10px rgba(0, 0, 255, 0.4));
     position: relative;
 }
 
@@ -138,7 +154,6 @@ input::placeholder {
     font-size: 15px; /* Tamaño un poco menor */
 }
 
-/* Botón para mostrar/ocultar contraseña */
 /* Botón de mostrar/ocultar contraseña */
 .password-toggle {
     position: absolute;
@@ -157,8 +172,8 @@ input::placeholder {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
-    font-size: 14px;
-     text-shadow: 0 1px 3px black; /* Sombra para contraste */
+    font-size: 12px;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.9));
 }
 
 /* Espacio entre checkbox y su etiqueta */
@@ -166,33 +181,26 @@ input::placeholder {
     margin-right: 5px;
 }
 
-/* --- Añade esto al final de tu CSS --- */
-
 /* --- Añade esto al CSS --- */
 .remember-me label {
-    color: #000000; /* Azul claro */
-    text-shadow: 
-        0 1px 2px rgba(255, 255, 255, 0.5), /* Sombra suave */
-        0 0 5px rgba(0, 0, 0, 0.9); /* Brillo azul */
+    color: #ffffff; /* Azul claro */
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
 }
 
 .remember-me label:hover {
-    color: #ffc8a8; /* Azul más claro al pasar el mouse */
-    text-shadow: 
-        0 1px 3px rgba(0, 0, 0, 0.7),
-        0 0 10px rgba(0, 0, 0, 0.7);
+    color: black; /* Azul más claro al pasar el mouse */
+
 }
 
 
 .forgot-password {
     display: none; /* Oculta inicialmente */
     color: white; /* Rojo suave para alerta */
-    text-shadow: 0 1px 3px rgb(0, 0, 0); 
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.9)); 
     text-decoration: none;
-    font-size: 15px;
+    font-size: 12px;
     /*
     margin-top: 10px; /* Espacio si aparece debajo */
 }
@@ -224,6 +232,7 @@ input::placeholder {
     background-color: white;
     color: black;
     font-size: 22px;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
 }
 
 /* Efecto hover para el botón de login */
@@ -238,6 +247,7 @@ input::placeholder {
     background-color: #0088ff;
     color: white;
     font-size: 22px;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
 }
 
 /* Efecto hover para el botón de invitado */
@@ -251,6 +261,7 @@ input::placeholder {
     margin-top: 20px;
     font-size: 16px;
     color: rgb(255, 255, 255);
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.9));
 }
 
 /* Enlace para registro */
@@ -260,7 +271,7 @@ input::placeholder {
     font-weight: 600;
     /* === CONTORNO NEGRO === */
     text-shadow: 
-        1px 1px 0 #002aff,1px 1px 0 #1900ff; /* Contorno negro de 1px */
+        1px 1px 0 #000000,1px 1px 0 #1900ff; /* Contorno negro de 1px */
     padding: 2px 4px; /* Espacio adicional para mejor legibilidad */
 }
 

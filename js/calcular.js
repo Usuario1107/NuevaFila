@@ -5,25 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (storedUsername) {
         document.getElementById('username').textContent = storedUsername;
     }
-      // Añadir funcionalidad para mostrar/ocultar contraseña
-    const passwordToggle = document.querySelector('.password-toggle');
-      if (passwordToggle) {  // Verificar que el elemento existe
-        passwordToggle.addEventListener('click', function() {
-        const passwordInput = document.getElementById('password');
-        const icon = this.querySelector('i'); 
-            if (passwordInput.type === 'password') {
-                  // Cambia a texto visible
-                passwordInput.type = 'text';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            } else {
-                  // Cambia a contraseña oculta
-                passwordInput.type = 'password';
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            }
-        });
-    }
     
     // Configurar el evento para el botón de cálculo
     document.getElementById('calculateBtn').addEventListener('click', calculateResult);
