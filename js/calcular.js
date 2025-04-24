@@ -5,6 +5,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if (storedUsername) {
         document.getElementById('username').textContent = storedUsername;
     }
+       // Añade este código para el menú hamburguesa
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navLinks = document.querySelector('.nav-links'); 
+    if (hamburger) {
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+    }
+    
     
     // Configurar el evento para el botón de cálculo
     document.getElementById('calculateBtn').addEventListener('click', calculateResult);
