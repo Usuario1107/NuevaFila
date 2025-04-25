@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Filas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <link rel="stylesheet" href="css/inicio.css">
 </head>
 <body>
+
+        <!-- Fondo animado -->
+    <div class="area">
+            <ul class="circles">
+            <li></li><li></li><li></li><li></li><li></li>
+            <li></li><li></li><li></li><li></li><li></li>
+        </ul>
+    </div>
     <!-- Barra de navegación -->
     <nav>
         <div class="logo-container">
@@ -62,19 +71,18 @@
         <button id="calculateBtn" class="calculate-btn">Calcular</button>
 
         <div class="result-container">
-            <div id="result" class="result-box">Resultado</div>
+            <div id="result" class="result-box"></div>
             <div id="validationMessage" class="validation-message"></div>
             <div class="formula">FILA ANTERIOR - MILTIPLICADOR (NUEVA FILA)</div>
         </div>
         <p class="destacado-texto">
-            <strong>Nueva Fila</strong> es una calculadora diseñada para <strong>optimizar</strong> el proceso de obtención de nueva  fila en operaciones con desmaidos variables. Su objetivo es agilizar y simplificar cálculos que usualmente se realizan de forma manual.
+            <strong>Nueva Fila</strong> es una calculadora diseñada para <strong>optimizar</strong> el proceso de con desmaidos variables. Su objetivo es agilizar y simplificar los cálculos evitando errores manuales.
         </p>
         <p class="destacado-texto"> 
-            Toma como entrada dos vectores —uno correspondiente a la <strong>fila anterior</strong> y otro a la <strong>nueva fila</strong> junto con un <strong>multiplicador</strong> en formato decimal. 
-            A partir de estos datos, aplica automáticamente la operación <strong>Fila Anterior − Multiplicador × Nueva Fila</strong> y devuelve como resultado. 
-            Esta herramienta permite realizar el procedimiento de forma rápida, precisa y sin errores manuales.
-          </p>
-          
+            Toma como entrada dos vectores uno correspondiente a la <strong>fila anterior</strong> y otro a la <strong>nueva fila</strong> junto con un <strong>multiplicador</strong> en formato decimal. 
+            A partir de estos datos, aplica automáticamente la operación <strong>Fila Anterior − Multiplicador × Nueva Fila</strong> y devuelve como resultado.
+        </p>
+        
         
     </div>
 
@@ -106,7 +114,8 @@
             </div>
         </div>
     </footer>
-
     <script src="js/calcular.js"></script>
+
+
 </body>
 </html>

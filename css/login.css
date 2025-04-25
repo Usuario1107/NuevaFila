@@ -266,10 +266,3 @@ input::placeholder {
 .register-link a:hover {
     text-decoration: underline;
 }
-/* Estilo responsivo para dispositivos móviles */
-@media (max-width: 480px) {
-    .login-container {
-        width: 90%; /* Adaptarse al ancho de la pantalla */
-        padding: 30px 20px; /* Reducir el padding en pantallas pequeñas */
-    }
-}
